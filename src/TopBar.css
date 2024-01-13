@@ -1,0 +1,16 @@
+.TopBar {
+    background-color: rgb(255, 134, 134);
+    margin: auto;
+    width: 100%;
+}
+
+table.TopBar {
+    min-width: 30%;
+    width: 40%;
+    text-align: center;
+    padding: 0;
+}
+
+h1 {
+    font-size: 40px;
+}
