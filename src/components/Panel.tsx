@@ -14,8 +14,17 @@ export function Panel({text, picture, align}: {text: any, picture: any, align: a
                         </div>
                         <div className='TextBox'>
                             <div>
-                                <h3>{text.title}</h3>
+                                {text.url !== "" ? <h3><a href={text.url}>{text.title}</a></h3> : <h3>{text.title}</h3>}
                                 <p>{text.body}</p>
+                                <br/>
+                               
+                        {
+                            text.skills !== "" ? 
+                                <div>
+                                    <h4>Skills Used:</h4>
+                                    <p>{text.skills}</p>
+                                </div> : null
+                        }
                             </div>
                         </div>
                     </div>
@@ -23,8 +32,16 @@ export function Panel({text, picture, align}: {text: any, picture: any, align: a
                     <div>
                         <div className='TextBox'>
                             <div>
-                                <h3>{text.title}</h3>
+                                {text.url !== "" ? <h3><a href={text.url}>{text.title}</a></h3> : <h3>{text.title}</h3>}
                                 <p>{text.body}</p>
+                                <br/>
+                                {
+                                    text.skills !== "" ? 
+                                        <div>
+                                            <h4>Skills Used:</h4>
+                                            <p>{text.skills}</p>
+                                        </div> : null
+                                }
                             </div>
                         </div>
                         <div className='PictureBox'>
