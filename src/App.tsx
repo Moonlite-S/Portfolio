@@ -8,12 +8,16 @@ import { Skills } from './components/Skills'
 function App() {
   return (
     <>
-    <BGSVG/>
+    <div className='overflow-auto'>
 
-    <div className='h-screen content-center overflow-y-hidden'>
+      <BGSVG/>  
 
-      <MainHeader/>
+      <div className="h-screen content-center">
 
+        <MainHeader/>
+
+      </div>
+      
     </div>
     </>
   )
