@@ -1,3 +1,3 @@
-# A Work in Progress
+# My Portfolio
 
-Sean
+Nothing else here lol
