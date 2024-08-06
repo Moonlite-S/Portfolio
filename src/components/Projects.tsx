@@ -10,7 +10,7 @@ export function Projects() {
     {
       name: "Blog Site",
       description: "My first ever project using NextJS. It definitely was a challenge, but it was a fun learning experience. It's hosted using Vercel with my own bought domain if you wanna check it out. :D",
-      created: "Vercel",
+      created: "NextJS, React, Typescript, Prisma, Postgres",
       img_url: "/moon.webp",
       url: "https://moonlite-s.com",
       setCurrentProject: setCurrentProject
@@ -140,7 +140,7 @@ function ProjectDiv(
 
           <h2 className="ResponsiveTextLg mb-5 text-center">{name}</h2>
 
-          <img src={img_url} className="mx-auto h-24 mb-5 sm:h-40 md:h-56" alt={name + "  Preview"}/>
+          <img src={img_url} className="mx-auto mb-5" alt={name + "  Preview"}/>
             
           <h3 className="ResponsiveTextBase indent-4">{description}</h3>
 

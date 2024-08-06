@@ -22,6 +22,10 @@
         @apply roboto-light
     }
 
+    .ResponsiveTextXSm {
+      @apply text-xs sm:text-sm md:text-base
+  }
+
     .ResponsiveTextSm {
         @apply text-sm sm:text-base md:text-lg
     }
@@ -32,6 +36,14 @@
     
     .ResponsiveTextLg {
         @apply text-lg sm:text-xl md:text-2xl
+    }
+
+    .HeaderText {
+        @apply text-3xl sm:text-4xl md:text-5xl amatic-sc-regular
+    }
+
+    .ButtonText {
+        @apply text-sm sm:text-base md:text-lg
     }
 
 }
@@ -108,4 +120,15 @@
     font-weight: 900;
     font-style: italic;
   }
-  
+
+.amatic-sc-regular {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.amatic-sc-bold {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
