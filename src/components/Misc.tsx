@@ -20,8 +20,7 @@ const list = {
   },
   hidden: {
     opacity: 0,
-
-  },
+  }
 }
 
 const item = {
@@ -52,9 +51,7 @@ export function BoxedDivWithDelayContainer(
         initial="hidden"
         animate="visible"
         variants={list}>
-        <div>
           {children}
-        </div>
       </motion.div>
 
     </AnimatePresence>

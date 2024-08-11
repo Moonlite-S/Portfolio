@@ -33,8 +33,8 @@ export function Projects() {
     },
     W: {
       name: "W, a Rude Voice Assistant",
-      description: "W was inspired by a content creator that I watch called Neuro-sama, a funny AI that speaks and listens to her chat. I made a small project that does something similar to what she does on a smaller scale: listens to my voice and responds accordingly through audio; just with a bit of attitude 'cause I thought that would make it funny.",
-      created:"Python, Ollama, React, Flask",
+      description: "W was inspired by a content creator that I watch called Neuro-sama, a funny AI that speaks and listens to her chat. I made a small project that does something similar to what she does on a smaller scale: listens to my voice and responds accordingly through audio; just with a bit of attitude 'cause I thought that would make it funny.\n\tThe hardest but most important part of the project was finding a way to update the site in realtime, so I researched and used a web socket to do just that.\n\tThe process goes in this order:\n-User speaks into their microphone\n-OpenAI's Whisper converts that into text\n-Pipes that output to Ollama's W model\n-It's output is piped onto a text-to-speech library\n-then finally uses VLC to play that audio. ",
+      created:"Python, Ollama, React, Flask, Flask-SocketIO, VLC",
       img_url: "/W.webp",
       url: "https://github.com/Moonlite-S/W",
       setCurrentProject: setCurrentProject
@@ -142,7 +142,7 @@ function ProjectDiv(
 
           <img src={img_url} className="mx-auto mb-5" alt={name + "  Preview"}/>
             
-          <h3 className="ResponsiveTextBase indent-4">{description}</h3>
+          <h3 className="ResponsiveTextBase indent-4 whitespace-pre-wrap">{description}</h3>
 
           <h4 className="ResponsiveTextBase ResponsiveFontLight mt-2">{"Created using: " + created}</h4>
 
