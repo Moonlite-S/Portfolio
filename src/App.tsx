@@ -1,76 +1,111 @@
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { About } from './components/About'
-import { BoxedDiv, BoxedDivWithDelayContainer, BGSVG } from './components/Misc'
+import { BoxedDiv, BGSVG } from './components/Misc'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
+import { motion } from 'framer-motion'
 
 function App() {
   return (
-    <>
     <div className='overflow-auto'>
 
       <BGSVG/>  
 
-      <div className="h-screen content-center">
+      <div className="content-center h-screen p-4">
 
-        <MainHeader/>
+          <Headers/>  
+
+          <NavBar/>
+
+          <MainBody/>
 
       </div>
       
     </div>
-    </>
   )
 }
 
 export default App
 
-function MainHeader() {
-  const [tab, setTab] = useState<string>('')
-  const inactive = 'px-4 py-2 mx-2 rounded-md transition duration-300 hover:bg-red-400/50'
-  const active = 'px-4 py-2 mx-2 rounded-md transition duration-300 bg-red-400/80'
+function NavBar() {
+  const inactive = 'px-4 py-2 mx-2 rounded-md transition duration-300 hover:bg-rose-300'
+  const active = 'px-4 py-2 mx-2 rounded-md transition duration-300 bg-rose-300/70'
+
+  const isVisibleAbout = HookIntersectionObserver('About', 0.8)
+  const isVisibleSkills = HookIntersectionObserver('Skills', 0.8)
+  const isVisibleProjects = HookIntersectionObserver('Projects', 0.1, "900px")
 
   return (
-    <BoxedDivWithDelayContainer>
+    <BoxedDiv>
 
-      <BoxedDiv>
+      <div className='flex flex-row justify-center'>
 
-          <h1 className='HeaderText text-center'>Sean Dela Cruz</h1>
-
-      </BoxedDiv>
-
-      <BoxedDiv>
-
-        <h1 className='ResponsiveTextBase ResponsiveFontThin text-center'>seandelac112345@gmail.com</h1>
+        <motion.a href='#About' className={isVisibleAbout ? active : inactive}>
+            <h3 className='ButtonText'>About</h3>
+        </motion.a>
         
-      </BoxedDiv>
+        <motion.a href='#Skills' className={isVisibleSkills ? active : inactive}>
+            <h3 className='ButtonText'>Skills</h3>
+        </motion.a>
 
-      <BoxedDiv>
+        <motion.a href='#Projects' className={isVisibleProjects ? active : inactive}>
+            <h3 className='ButtonText'>Projects</h3>
+        </motion.a>
 
-        <div className='flex flex-row justify-center'>
+      </div>
 
-          <div className={tab === 'Skills' ? active : inactive} onClick={() => setTab('Skills')}>
-              <h3 className='ButtonText'>Skills</h3>
-          </div>
+    </BoxedDiv>
+  )
+}
 
-          <div className={tab === 'Projects' ? active : inactive} onClick={() => setTab('Projects')}>
-              <h3 className='ButtonText'>Projects</h3>
-          </div>
+function MainBody() {
+  return(
+    <div className='h-3/4 overflow-y-auto'>
+      <About/>
 
-          <div className={tab === 'About' ? active : inactive} onClick={() => setTab('About')}>
-              <h3 className='ButtonText'>About</h3>
-          </div>
-          
-        </div>
+      <Skills/>
 
-      </BoxedDiv>
+      <Projects/>
+    </div>
+  )
+}
 
-      {tab === 'Skills' && <Skills/>}
+function HookIntersectionObserver(targetId: string, threshold: number = 0, margin: string = "0px"): boolean {
+  const [IsIntersecting, setIsIntersecting] = useState(false)
 
-      {tab === 'Projects' && <Projects/>}
+  useEffect(() => {
+    const target_element = document.getElementById(targetId)
 
-      {tab === 'About' && <About/>}
+    if (!target_element) {
+      console.log("Target element not found")
+      return
+    }
 
-    </BoxedDivWithDelayContainer>
-)
+    const observer = new IntersectionObserver(([entries]) => {
+      setIsIntersecting(entries.isIntersecting)
+    },
+    {
+      threshold: threshold,
+      rootMargin: margin,
+    })
+
+    observer.observe(target_element)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [targetId])
+
+  return IsIntersecting
+}
+
+function Headers() {
+  return (
+    <>
+    <BoxedDiv>
+        <h1 className='HeaderText text-center'>Sean Dela Cruz</h1>
+    </BoxedDiv>
+    </>
+  )
 }

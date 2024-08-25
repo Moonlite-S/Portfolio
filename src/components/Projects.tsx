@@ -1,157 +1,87 @@
-import { motion } from "framer-motion"
-import { BoxedDiv, BoxedDivWithDelayContainer } from "./Misc"
-import { useState } from 'react'
+import { BoxedDiv, Projects_Data } from "./Misc"
 
 export function Projects() {
-  const [currentProject, setCurrentProject] = useState<string>('List')
-
-  const Projects = {
-    BlogSite: 
-    {
-      name: "Blog Site",
-      description: "My first ever project using NextJS. It definitely was a challenge, but it was a fun learning experience. It's hosted using Vercel with my own bought domain if you wanna check it out. :D",
-      created: "NextJS, React, Typescript, Prisma, Postgres",
-      img_url: "/moon.webp",
-      url: "https://moonlite-s.com",
-      setCurrentProject: setCurrentProject
-    },
-    VertBot: {
-      name: "Vert Bot",
-      description: "A Discord bot I started way back in 2021. It's still considered in development since I tend to come back and add new things to it. Does a lot of fun minigames like Blackjack, guess the anime, and simulates the popular mobile game Honkai Star Rail's summoning system.",
-      created:"Python",
-      img_url: "/vert.webp",
-      url: "https://github.com/Moonlite-S/VertBot",
-      setCurrentProject: setCurrentProject
-    },
-    YTC: {
-      name: "Youtube Chat Soundboard",
-      description: "Sometimes I like livestreaming on Youtube, so one day I made a program where users can type in specific keywords that will play audio files on my computer. It led to some really funny well timed clips with my chat. I have made it so that other people can easily clone the repo and use it for their own livestreams.",
-      created:"Python",
-      img_url: "/ytc.webp",
-      url: "https://github.com/Moonlite-S/YTLivestreamChatSoundboard",
-      setCurrentProject: setCurrentProject
-    },
-    W: {
-      name: "W, a Rude Voice Assistant",
-      description: "W was inspired by a content creator that I watch called Neuro-sama, a funny AI that speaks and listens to her chat. I made a small project that does something similar to what she does on a smaller scale: listens to my voice and responds accordingly through audio; just with a bit of attitude 'cause I thought that would make it funny.\n\tThe hardest but most important part of the project was finding a way to update the site in realtime, so I researched and used a web socket to do just that.\n\tThe process goes in this order:\n-User speaks into their microphone\n-OpenAI's Whisper converts that into text\n-Pipes that output to Ollama's W model\n-It's output is piped onto a text-to-speech library\n-then finally uses VLC to play that audio. ",
-      created:"Python, Ollama, React, Flask, Flask-SocketIO, VLC",
-      img_url: "/W.webp",
-      url: "https://github.com/Moonlite-S/W",
-      setCurrentProject: setCurrentProject
-    },
-    WawaAI: {
-      name: "WawaAI",
-      description: "This is a chatbot web app that people can go and interact with ChatGPT like you can do on their website. The reason I made this was because I had another web app that I used for a while that does something similar, but it stopped working one day, so I guess I wanted to make something of my own. It's still very in development, but I have almost the basic functionality working.",
-      created:"Python, OpenAI, React, Flask",
-      img_url: "/wawaai.webp",
-      url: "https://github.com/Moonlite-S/WawaAI",
-      setCurrentProject: setCurrentProject
-    }
-  }
   return (
-    <>
-      {currentProject === 'List' && <ProjectList setCurrentProject={setCurrentProject}/>}
+    <div id='Projects'>
+      <BoxedDiv>
+        <h2 className="ResponsiveTextLg ResponsiveFontLight m-5 border-b border-black">Projects:</h2>
+      </BoxedDiv>
 
-      {currentProject === 'BlogSite' && <ProjectDiv {...Projects.BlogSite}/>}
-      {currentProject === 'VertBot' && <ProjectDiv {...Projects.VertBot}/>}
-      {currentProject === 'YTC' && <ProjectDiv {...Projects.YTC}/>}
-      {currentProject === 'W' && <ProjectDiv {...Projects.W}/>}
-      {currentProject === 'WawaAI' && <ProjectDiv {...Projects.WawaAI}/>}
-    </>
-  )
-}
+      <ProjectDiv {...Projects_Data.BlogSite}>
+        <h3 className="ResponsiveTextBase ResponsiveFontLight indent-4 whitespace-pre-wrap p-5">
+          My first ever project using NextJS. It definitely was a challenge, but it was a fun learning experience. It's hosted using Vercel with my own bought domain if you wanna check it out. :D It's called moonlite-s.com
+        </h3>
+      </ProjectDiv>
 
-function ProjectList(
-  {setCurrentProject}: {setCurrentProject: (arg0: string) => void}
-) {
-  const container = {
-    hidden: {opacity: 0},
-    show: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.1,
-        staggerChildren: 0.1
-      }
-    }
-  }
+      <ProjectDiv {...Projects_Data.VertBot} swap_sides>
+      <h3 className="ResponsiveTextBase ResponsiveFontLight indent-4 whitespace-pre-wrap p-5">
+        A Discord bot I started way back in 2021. It's still considered in development since I tend to come back and add new things to it. Does a lot of fun minigames like Blackjack, guess the anime, and simulates the popular mobile game Honkai Star Rail's summoning system.
+      </h3>
+      </ProjectDiv>
 
-  const item = {
-    hidden: {opacity: 0, y: 50},
-    show: {opacity: 1, y: 0},
-  }
-  return(
-    <BoxedDiv>
+      <ProjectDiv {...Projects_Data.YTC}>
+      <h3 className="ResponsiveTextBase ResponsiveFontLight indent-4 whitespace-pre-wrap p-5">
+        Sometimes I like livestreaming on Youtube, so one day I made a program where users can type in specific keywords that will play audio files on my computer. It led to some really funny well timed clips with my chat. I have made it so that other people can easily clone the repo and use it for their own livestreams.
+      </h3>
+      </ProjectDiv>
 
-      <motion.ul className="px-2"
-        variants={container}
-        initial="hidden"
-        animate="show">
+      <ProjectDiv {...Projects_Data.W} swap_sides>
+      <h3 className="ResponsiveTextBase ResponsiveFontLight indent-4 whitespace-pre-wrap px-5 mb-4">
+        W is a humourous voice assistant whose entire purpose is to scold you for existing. She listens to your voice and comes up with really bad jokes and horrible insults, but other than that, she's pretty cool.
+      </h3>
+      </ProjectDiv>
 
-        <motion.li variants={item} onClick={() => setCurrentProject('BlogSite')}><ProjectListButton name="Blog Site"/></motion.li>
-        <motion.li variants={item} onClick={() => setCurrentProject('VertBot')}><ProjectListButton name="VertBot"/></motion.li>
-        <motion.li variants={item} onClick={() => setCurrentProject('YTC')}><ProjectListButton name="Youtube Chat Soundboard"/></motion.li>
-        <motion.li variants={item} onClick={() => setCurrentProject('W')}><ProjectListButton name="W, a Voice AI Chatbot"/></motion.li>
-        <motion.li variants={item} onClick={() => setCurrentProject('WawaAI')}><ProjectListButton name="WawaAI"/></motion.li>
-
-      </motion.ul>
-
-    </BoxedDiv>
-  )
-}
-
-function ProjectListButton(
-  {name}: {name: string}
-) {
-  return(
-    <div className="ResponsiveTextSm p-2 my-2 rounded-md transition bg-red-400/30 hover:bg-red-400/80">
-
-      <p className="roboto-regular sm:ResponsiveFontLight">{name}</p>
-
+      <ProjectDiv {...Projects_Data.WawaAI}>
+      <h3 className="ResponsiveTextBase ResponsiveFontLight indent-4 whitespace-pre-wrap p-5">
+        This is a chatbot web app that people can go and interact with ChatGPT like you can do on their website. The reason I made this was because I had another web app that I used for a while that does something similar, but it stopped working one day, so I guess I wanted to make something of my own. It's still very in development, but I have almost the basic functionality working.",
+      </h3>
+      </ProjectDiv>
+        
     </div>
   )
 }
 
 type ProjectProps = {
   name: string,
-  description: string,
   created: string,
   img_url: string,
   url: string,
-  setCurrentProject: (arg0: string) => void
+  swap_sides?: boolean,
+  children: React.ReactNode
 }
 
 function ProjectDiv(
-  {name, description, created, img_url, url="", setCurrentProject}: ProjectProps,
+  {name, created, img_url, url="", swap_sides, children}: ProjectProps,
 ) {
   return(
-    <BoxedDivWithDelayContainer>
+    <BoxedDiv>
 
-      <BoxedDiv>
+        <h2 className="ResponsiveTextLg ResponsiveFontLight p-5">{name}</h2>
 
-        <div onClick={() => setCurrentProject('List')} className="inline-block rounded-md bg-red-700/20 px-4 py-2 hover:bg-red-700/60 transition">
+        <div className={swap_sides ? "flex sm:flex-row-reverse flex-col" : "flex sm:flex-row flex-col"}>
 
-            <h2 className="ResponsiveTextBase">Back</h2>
+          <div className="sm:basis-1/2">
+            <img src={img_url} className="mx-auto p-5" alt={name + "  Preview"}/>
+          </div>
 
+          <div className="sm:basis-1/2">
+            {children}
+          </div>
+            
         </div>
 
-      </BoxedDiv>
+        <h4 className="ResponsiveTextBase ResponsiveFontLight px-5">{"Created using: " + created}</h4>
 
-      <BoxedDiv>
+          <a href={url} target="blank" >
 
-          <h2 className="ResponsiveTextLg mb-5 text-center">{name}</h2>
+            <h5 className="ResponsiveTextBase ResponsiveFontLight rounded-md transition bg-rose-300/50 px-4 py-2 hover:bg-rose-300 flex justify-center mt-5">
 
-          <img src={img_url} className="mx-auto mb-5" alt={name + "  Preview"}/>
-            
-          <h3 className="ResponsiveTextBase indent-4 whitespace-pre-wrap">{description}</h3>
+              View Project
 
-          <h4 className="ResponsiveTextBase ResponsiveFontLight mt-2">{"Created using: " + created}</h4>
-
-          <h5>
-            <a href={url} target="blank" className="ResponsiveTextBase ResponsiveFontLight underline">View Project</a>
             </h5>
 
-      </BoxedDiv>
-      
-    </BoxedDivWithDelayContainer>
+          </a>
+
+    </BoxedDiv>
   )
 }

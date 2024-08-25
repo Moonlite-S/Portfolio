@@ -1,63 +1,60 @@
-import { AnimatePresence, motion, } from "framer-motion"
+import { motion, } from "framer-motion"
 
-type Props = {
-  children: React.ReactNode
-}
-
-/*
-        Framer Motion's Variants
-  visible and hidden are arbitrarily named to create the initial and animated states
-  when is set to "beforeChildren" or "afterChildren" to create the staggered animation
-  https://www.framer.com/motion/variants/
-*/
-
-const list = {
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
+export const Projects_Data = {
+  BlogSite: 
+  {
+    name: "Blog Site",
+    created: "NextJS, React, Typescript, Prisma, Postgres",
+    img_url: "/moon.webp",
+    url: "https://moonlite-s.com",
   },
-  hidden: {
-    opacity: 0,
+  VertBot: {
+    name: "Vert Bot",
+    created:"Python",
+    img_url: "/vert.webp",
+    url: "https://github.com/Moonlite-S/VertBot",
+  },
+  YTC: {
+    name: "Youtube Chat Soundboard",
+    created:"Python",
+    img_url: "/ytc.webp",
+    url: "https://github.com/Moonlite-S/YTLivestreamChatSoundboard",
+  },
+  W: {
+    name: "W, a Rude Voice Assistant",
+    created: "Python, OpenAI, React, Flask",
+    img_url: "/W.webp",
+    url: "https://github.com/Moonlite-S/W",
+  },
+  WawaAI: {
+    name: "WawaAI",
+    created:"Python, OpenAI, React, Flask",
+    img_url: "/wawaai.webp",
+    url: "https://github.com/Moonlite-S/WawaAI",
   }
 }
 
-const item = {
-  visible: { opacity: 1, y: 0 },
-  hidden: { opacity: 0, y: 50 },
+type BoxedDivProps = {
+  children: React.ReactNode
+  id?: string
 }
 
 export function BoxedDiv(
-  {children}: Props
+  {children, id}: BoxedDivProps
 ) {
   return (
     <motion.div 
-      className=' bg-red-400/10 mx-auto rounded-md my-2 p-4 text-xl backdrop-blur-md lg:max-w-2xl md:max-w-lg sm:max-w-md max-w-xs min-w-10' 
-      variants={item}
+      id={id}
+      className=' bg-red-400/10 mx-auto rounded-md my-2 p-4 backdrop-blur-md lg:max-w-5xl md:max-w-3xl max-w-md  min-w-10' 
+      initial={{ opacity: 0, y: 80}}
+      whileInView={{ opacity: 1, y: 0}}
+      transition={{ duration: 0.5 , ease: "easeInOut"}}
+      viewport={{ once: true }}
       exit={{ opacity: 0 }}>
       {children}
     </motion.div>
   )
 }
-
-export function BoxedDivWithDelayContainer(
-  {children}: Props
-) {
-  return (
-    <AnimatePresence>
-
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={list}>
-          {children}
-      </motion.div>
-
-    </AnimatePresence>
-  )
-}
-
 
 export function BGSVG() {
   return (
@@ -165,3 +162,4 @@ function RectGroup(
     </>
   )
 }
+
