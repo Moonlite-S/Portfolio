@@ -70,7 +70,7 @@ function ProjectDiv(
             
         </div>
 
-        <h4 className="ResponsiveTextBase ResponsiveFontLight px-5">{"Created using: " + created}</h4>
+        <h4 className="ResponsiveTextBase ResponsiveFontLight px-5 text-center">{"Created using: " + created}</h4>
 
           <a href={url} target="blank" >
 

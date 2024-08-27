@@ -58,7 +58,7 @@ export function BoxedDiv(
 
 export function BGSVG() {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 100 100" className="w-full h-screen absolute -z-10 bg-[#f5cbcb]/60">
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 100 100" className="w-full h-screen absolute -z-10 bg-[#f5cbcb]/30">
 
       <RectGroup
         y={-50}

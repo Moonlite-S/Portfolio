@@ -39,7 +39,7 @@
     }
 
     .HeaderText {
-        @apply text-3xl sm:text-4xl md:text-5xl amatic-sc-regular
+        @apply text-4xl sm:text-4xl md:text-5xl amatic-sc-regular
     }
 
     .ButtonText {

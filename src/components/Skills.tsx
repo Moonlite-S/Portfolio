@@ -8,7 +8,7 @@ export function Skills() {
 
         <h2 className="ResponsiveTextLg ResponsiveFontLight mx-5">Languages:</h2>
 
-        <div className="flex flex-row mx-5 flex-wrap ">
+        <div className="flex flex-row mx-5 flex-wrap">
 
           <SkillGroup name="C++" url="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png"/>
 
@@ -64,7 +64,7 @@ function SkillGroup({name, url="#"}: SkillGroupProps) {
   return (
   <div className="p-4 rounded-md">
 
-      <img src={url} className="h-8 sm:h-10 md:h-12 " alt={name}/>
+      <img src={url} className="h-12 sm:h-14 md:h-16 " alt={name}/>
       
     </div>
   )

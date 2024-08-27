@@ -1,5 +1,6 @@
 import { BoxedDiv } from "./Misc"
 import sdlc from '/lkin.jpg'
+import gmail from '/gmail.webp'
 
 export function About() {
   return (
@@ -23,7 +24,7 @@ export function About() {
 
           </div>
 
-            <img src={sdlc} className="h-30 mx-auto sm:h-36 md:h-52 rounded-full shadow-2xl" alt="Sean's profile picture"/>
+            <img src={sdlc} className="h-32 mx-auto sm:h-36 md:h-52 rounded-full shadow-2xl" alt="Sean's profile picture"/>
 
           </div>
 
@@ -34,7 +35,7 @@ export function About() {
 
           </a>
 
-          <h1 className="ResponsiveTextLg mt-4">Socials:</h1>
+          <h1 className="ResponsiveTextLg my-4">Socials:</h1>
 
           <div className="flex flex-row gap-4 ">
 
@@ -50,9 +51,16 @@ export function About() {
 
             </a>
 
+            <a href="mailto:seandelac112345@gmail.com" target="_blank">
+
+              <img src={gmail} className="w-8 h-8 sm:w-10 sm:h-10" alt="Gmail Logo"/>
+
+            </a>
+
           </div>
 
-          <h1 className='ResponsiveTextBase mt-5'>Email: seandelac112345@gmail.com</h1>
+          <h3 className="ResponsiveTextLg ResponsiveFontLight pt-5">Email: seandelac112345@gmail.com</h3>
+
         </div>
 
       </BoxedDiv>
